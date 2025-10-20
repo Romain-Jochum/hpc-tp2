@@ -3,99 +3,12 @@
 #include "Animal.h"
 #include "Zoo.hpp"
 #include <vector>
-
-// Mammal class
-class Mammal : public Animal {
-protected:
-	int numLegs;
-	double noseLength; // in cm
-
-public:
-	Mammal(const std::string &name_, double weight_, const std::string &movement_, int legs_, double noseLen_) :
-		Animal(name_, weight_, movement_), numLegs(legs_), noseLength(noseLen_) {}
-
-	void print() const override {
-		Animal::print();
-		std::cout << ", Type: mammal, Legs: " << numLegs << ", Nose length: " << noseLength << "cm";
-	}
-
-	void type() const override { std::cout << "mammal"; }
-	void moveDescription() const override { std::cout << movement; }
-};
-
-// Bird class
-class Bird : public Animal {
-protected:
-	double wingSpan; // in meters
-	bool canFly;
-
-public:
-    Bird(const std::string &name_, double weight_, const std::string &movement_, double wingSpan_, bool canFly_) :
-        Animal(name_, weight_, movement_), wingSpan(wingSpan_), canFly(canFly_) {}
-
-	// Convenience constructor: assume movement and canFly from wingspan
-	Bird(const std::string &name_, double weight_, double wingSpan_) :
-		Animal(name_, weight_, "flies around"), wingSpan(wingSpan_), canFly(true) {}
-
-	void print() const override {
-		Animal::print();
-		std::cout << ", Type: bird, Wingspan: " << wingSpan << "m, Can fly: " << (canFly ? "yes" : "no");
-	}
-
-	void type() const override { std::cout << "bird"; }
-
-	void moveDescription() const override {
-		if (canFly) std::cout << "flies with wings";
-		else std::cout << movement;
-	}
-};
-
-// Fish class
-class Fish : public Animal {
-protected:
-	bool saltwater; // true: saltwater, false: freshwater
-	double length; // in cm
-
-public:
-	Fish(const std::string &name_, double weight_, const std::string &movement_, bool saltwater_, double length_) :
-		Animal(name_, weight_, movement_), saltwater(saltwater_), length(length_) {}
-
-	void print() const override {
-		Animal::print();
-		std::cout << ", Type: fish, Habitat: " << (saltwater ? "saltwater" : "freshwater") << ", Length: " << length << "cm";
-	}
-
-	void type() const override { std::cout << "fish"; }
-
-	void moveDescription() const override { std::cout << "swims"; }
-};
-
-// Bonus classes: Penguin, Ostrich and Dolphin
-class Penguin : public Bird {
-public:
-	Penguin(const std::string &name_, double weight_, double wingSpan_) :
-		Bird(name_, weight_, "walks and toboggans", wingSpan_, false) {}
-
-	void type() const override { std::cout << "penguin"; }
-};
-
-class Ostrich : public Bird {
-public:
-	Ostrich(const std::string &name_, double weight_, double wingSpan_) :
-		Bird(name_, weight_, "runs fast", wingSpan_, false) {}
-
-	void type() const override { std::cout << "ostrich"; }
-};
-
-class Dolphin : public Mammal {
-public:
-	Dolphin(const std::string &name_, double weight_, double noseLen_) :
-		Mammal(name_, weight_, "swims gracefully", 0, noseLen_) {}
-
-	void type() const override { std::cout << "dolphin"; }
-
-	void moveDescription() const override { std::cout << "swims using tail flukes"; }
-};
+#include "Mammal.h"
+#include "Bird.h"
+#include "Fish.h"
+#include "Penguin.h"
+#include "Ostrich.h"
+#include "Dolphin.h"
 
 int main()
 {

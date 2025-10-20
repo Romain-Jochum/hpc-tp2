@@ -1,5 +1,6 @@
+
 cmake_minimum_required(VERSION 3.10)
-project(Allumette LANGUAGES CXX)
+project(hpc-tp2 LANGUAGES CXX)
 
 # set -fPIC (Position Independent Code) to on
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -8,14 +9,14 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Find all source files
-file(GLOB SRC_FILES "src/*.cpp")
+# Find all source files in src/
+file(GLOB SRC_FILES "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
-# Create the executable
-add_executable(main ${SRC_FILES})
+# Create the Questions executable from all source files
+add_executable(Questions ${SRC_FILES})
 
-# Add includes directory
-target_include_directories(main PRIVATE include)
+# Add src directory to the include path for the Questions target
+target_include_directories(Questions PRIVATE ${CMAKE_SOURCE_DIR}/src)
 
 
 

@@ -59,7 +59,7 @@ Why these choices?
 
 ---
 
-## Q2 — Derived classes (file: q2.cpp / questions.cpp)
+## Q2 — Derived classes (each class now in its own header/source pair under `src/`)
 What I implemented
 - Derived classes: `Mammal`, `Bird`, `Fish`. Each adds members appropriate to its category and overrides the virtual functions.
 - Bonus derived classes: `Penguin`, `Ostrich` (both derive from `Bird`), and `Dolphin` (derives from `Mammal`).
@@ -219,8 +219,8 @@ Notes on memory management and safety
 ## Build & test steps I ran
 Commands used locally to validate:
 ```bash
-# compile questions + zoo
-g++ -std=c++17 -Wall -Wextra -I src src/questions.cpp src/Zoo.cpp -o build/Questions
+# compile questions + zoo (now using per-class sources)
+g++ -std=c++17 -Wall -Wextra -I src src/Questions.cpp src/Zoo.cpp src/Mammal.cpp src/Bird.cpp src/Fish.cpp src/Penguin.cpp src/Ostrich.cpp src/Dolphin.cpp -o build/Questions
 
 # run
 ./build/Questions

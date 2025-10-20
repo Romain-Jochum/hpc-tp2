@@ -7,13 +7,13 @@ This small C++ exercise implements an object-oriented `Animal` hierarchy and dem
 
 The work is split across four questions:
 - Q1 — define a base `Animal` class (`src/Animal.h`) with protected data members, public accessors and virtual member functions.
-- Q2 — add derived classes: `Mammal`, `Bird`, `Fish` and bonus classes `Penguin`, `Ostrich`, `Dolphin` (in `src/q2.cpp` / `src/questions.cpp`). Each adds appropriate members and overrides the virtual functions.
+- Q2 — add derived classes: `Mammal`, `Bird`, `Fish` and bonus classes `Penguin`, `Ostrich`, `Dolphin` (now each implemented in their own `src/*.h` + `src/*.cpp`). Each adds appropriate members and overrides the virtual functions.
 - Q3 — enable and demonstrate polymorphism: virtual/override keywords are used so calls through `Animal*` dispatch to derived implementations.
 - Q4 — create a `Zoo` collection using `std::vector<Animal*>` and helper functions in `src/Zoo.hpp` / `src/Zoo.cpp` to print displacements and compute total weight.
 
 ## Files of interest
 - `src/Animal.h` — base class.
-- `src/q1.cpp`, `src/q2.cpp`, `src/questions.cpp` — exercises and demos (note: `questions.cpp` currently contains the main demo used when building/run manually).
+-- `src/Questions.cpp` — main demo. Each class now has its own header/source pair under `src/`.
 - `src/Zoo.hpp`, `src/Zoo.cpp` — helper functions: `info_displacement`, `inventory`, `total_weight`.
 
 ## Build & Run
@@ -28,7 +28,7 @@ cmake --preset debug
 # Build the debug target
 cmake --build build/debug
 
-# Run (binary location depends on the CMake target; an example binary used during manual testing is build/Questions)
+# Run (binary location depends on the CMake target; the demo binary is `build/<preset>/Questions`)
 ./build/Questions
 ```
 
@@ -36,7 +36,7 @@ cmake --build build/debug
 
 ```bash
 mkdir -p build
-g++ -std=c++17 -Wall -Wextra -I src src/questions.cpp src/Zoo.cpp -o build/Questions
+g++ -std=c++17 -Wall -Wextra -I src src/Questions.cpp src/Zoo.cpp src/Mammal.cpp src/Bird.cpp src/Fish.cpp src/Penguin.cpp src/Ostrich.cpp src/Dolphin.cpp -o build/Questions
 ./build/Questions
 ```
 
