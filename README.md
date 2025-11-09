@@ -1,6 +1,5 @@
 # HPC TP2 — Animal hierarchy (Q1 → Q4)
-
-Author: Romain Jochum
+Romain Jochum
 
 ## Overview
 This small C++ exercise implements an object-oriented `Animal` hierarchy and demonstrates inheritance, polymorphism and basic use of the STL `vector` to collect polymorphic objects.
